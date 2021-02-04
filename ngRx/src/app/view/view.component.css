@@ -1,0 +1,9 @@
+.text-large {
+    font-size: 150%;
+  }
+  .cursor-pointer{
+    cursor: pointer;
+  }
+  tr,td,th{
+    padding-left: 3rem;
+  }

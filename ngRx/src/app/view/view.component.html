@@ -1,0 +1,42 @@
+<button class="btn btn-primary mt-4 mx-4" [routerLink]="['/']">Add User</button>
+<table class="table-bordered mx-4 my-4 w-75">
+   <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Options</th>
+   </tr>
+   <tr *ngFor="let user of User">
+       <td> {{user.name}} </td>
+       <td> {{user.email}} </td>
+       <td> {{user.mobile}} </td>
+       <td>
+        <i class="fa fa-eye text-large mx-1 cursor-pointer" aria-hidden="true" (click)="openModal(template,user.id)"></i>
+        <i class="fa fa-pencil-square-o text-large text-secondary mx-1 cursor-pointer" aria-hidden="true" (click)="edit(user)"></i>
+        <i class="fa fa-trash-o text-large text-danger mx-1 cursor-pointer" aria-hidden="true" (click)="deleteEntry(user.id)"></i>
+
+       </td>
+   </tr>
+</table>
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Record</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    
+        <ul>
+            <li>{{onlyUser.name}} </li>
+            <li>{{onlyUser.email}}</li>
+            <li>{{onlyUser.mobile}}</li>
+        </ul>
+     
+    </div>
+  </ng-template>
+
+  <div *ngIf='errorMessage'
+  class='alert alert-danger'>
+Error: {{ errorMessage }}
+</div>

@@ -1,0 +1,76 @@
+<div class="container col-6 jumbotron my-4">
+    <h2 class="text-center">Form</h2>
+    <div class="row">
+        <div class="col-sm-10">
+            <form [formGroup]="signupForm">
+
+                <!-- Input field and Validation for name -->
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+
+                    <input formControlName="name" id="name" type="text" class="form-control">
+
+                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+
+                        <div *ngIf="f.name.errors.required">Name is required.</div>
+
+                        <div *ngIf="f.name.errors.minlength">Name should be between 3 to 30 character.</div>
+                        <div *ngIf="f.name.errors.pattern">Please, Enter Valid Name.</div>
+
+                    </div>
+
+                </div>
+
+                <!-- Input field and Validation for Email -->
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input formControlName="email" id="email" type="text" class="form-control">
+
+                    <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+
+                        <div *ngIf="f.email.errors.required">Email is required.</div>
+
+                        <div *ngIf="f.email.errors.email">Please, enter valid email address.</div>
+
+                    </div>
+
+                </div>
+
+                <!-- Input field and Validation for MobileNumber -->
+
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input formControlName="mobile" id="mobile" type="text" class="form-control" maxlength="10">
+
+                    <div *ngIf="f.mobile.touched && f.mobile.invalid" class="alert alert-danger">
+
+                        <div *ngIf="f.mobile.errors.required">Mobile Number is required.</div>
+
+                        <div *ngIf="f.mobile.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+
+                    </div>
+
+                </div>
+
+                <button *ngIf="editFlag" class="btn btn-primary w-25" type="submit" [disabled]="!signupForm.valid"
+                (click)="update()">Update</button>
+
+                <button *ngIf="!editFlag" class="btn btn-primary w-25" type="submit" [disabled]="!signupForm.valid"
+                   (click)="submit()">Submit</button>
+                   <button class="btn btn-secondary w-25 ml-3" type="submit" [routerLink]="['/view']" >View</button>
+
+
+
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+ 
+
